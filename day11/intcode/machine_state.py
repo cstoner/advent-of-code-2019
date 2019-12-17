@@ -6,11 +6,11 @@ from .devices.output_device import OutputDevice
 
 class MachineState:
     def __init__(self, memory: List[int],
-                 input_device: InputDevice = None,
-                 output_device: OutputDevice = None):
+                 input_device: InputDevice,
+                 output_device: OutputDevice):
         self.pc = 0
-        self.memory = memory
         self.relative_base = 0
+        self.memory = memory
 
         self.input_device = input_device.io_get()
         self.output_device = output_device.io_put()
@@ -23,10 +23,11 @@ class MachineState:
                 yield lst[i:i + n]
 
         output_lines = [f"Program Counter: {self.pc} (instr: {self.memory[self.pc]})",
-                        f"Relative Base: {self.relative_base}", f"Memory:"]
+                        f"Relative Base: {self.relative_base}",
+                        f"Memory:"]
 
         memory_chunks = list(chunks(10, self.memory))
         for (i, l) in enumerate(memory_chunks):
-            output_lines.append(f"{i * 10} - {l}")
+            output_lines.append(f"{i * 10: >4} - {l}")
 
         return "\n".join(output_lines)

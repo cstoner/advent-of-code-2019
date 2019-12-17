@@ -22,5 +22,5 @@ class IntCodeComputer:
                 self.logger()
 
             (inst, mode) = self.read_next_instruction()
-            inst.load_registers(mode, self.machine_state)
+            inst.load_registers(self.machine_state, mode)
             inst.exec(self.machine_state)

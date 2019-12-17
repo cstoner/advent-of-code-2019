@@ -19,7 +19,7 @@ class Instruction:
     def exec(self, state: MachineState) -> None:
         raise IntCodeNotImplemented("Exec must be specified")
 
-    def load_registers(self, mode: int, state: MachineState):
+    def load_registers(self, state: MachineState, mode: int):
         self.operation_values = []
         self.register_values = state.memory[state.pc:state.pc + self._param_count()]
         for (i, r) in enumerate(self.register_values):

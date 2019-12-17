@@ -377,19 +377,6 @@ class SpaceShipGrid:
             print(f"Painted a total of {len(self.grid.keys())} tiles")
 
 
-
-
-
-
-# test_prog1_input = [109, 1, 204, -1, 1001, 100, 1, 100, 1008, 100, 16, 101, 1006, 101, 0, 99]
-# test_prog1 = MachineState(
-#     test_prog1_input,
-#     Queue(),
-#     Queue(),
-#     False
-# )
-# exec_program(test_prog1)
-
 with open('input.txt') as INPUT:
     day11_inputs = [int(i) for i in INPUT.read().split(',')]
 
